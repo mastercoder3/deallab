@@ -1,0 +1,29 @@
+page-uploadeals {
+  .list ion-item-options {
+    border-bottom: none !important;
+
+    .button {
+      background: theme-colors('mainColors', 'accentBase');
+    }
+  }
+
+  ion-avatar{
+    img{
+
+      border-radius: 0% !important;
+
+
+    }
+      }
+
+  .item-inner {
+    padding: 0 !important;
+  }
+
+  ion-label {
+    margin: 0 !important;
+  }
+  ion-button {
+    font-size: 120px; //Preferred size here
+}
+}

@@ -1,0 +1,59 @@
+<!-- Themes Login + logo 2 -->
+<ion-content has-header *ngIf="data != null" >
+  <ion-grid *ngIf="data != null">
+      <ion-row padding-left padding-right>
+          <ion-col text-center col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+
+
+            <!--  <button ion-button text-capitalize button-clear clear float-left (click)="onEvent('onSkip')">{{data.skip}}</button>
+              <button ion-button text-capitalize button-clear clear float-right (click)="onEvent('onRegister')">{{data.register}}</button>-->
+
+          </ion-col>
+
+
+
+          <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6 form>
+            <ion-item transparent text-center>
+              <!---Logo Title-->
+              <h1>Join us</h1>
+              <h5 ion-text no-margin text-wrap>{{data.title}}</h5>
+
+              <br>
+              
+
+              
+            </ion-item>
+            <!---Input field username-->
+              <ion-input transparent text-left required type="text" [placeholder]="data.username" [(ngModel)]="username" ></ion-input>
+              <hr>
+              <ion-input text-left required type="text" [placeholder]="data.email" [(ngModel)]="email" ></ion-input>
+              <hr>
+            
+
+            <!---Input field password-->
+           
+              <ion-input text-left required type="password" [placeholder]="data.password" [(ngModel)]="password"></ion-input>
+              <hr>
+              <ion-input text-left required type="text" [placeholder]="data.number" [(ngModel)]="number"></ion-input>
+              <hr>
+            
+            <div  text-center>
+              
+              <button ion-button default-button block text-capitalize box-shadow style="margin-top: 60px;" (click)="onEvent('onLogin')">{{data.login1}}</button>
+
+              <hr class="hr-text" data-content="or Log in using">
+
+            
+             <button ion-button default-button block text-capitalize box-shadow style="margin-top: 40px;" (click)="onEvent('onLogin')">{{data.login}}</button>
+              <p style = "color:deepskyblue">Not ready to sign up? Explore the app.</p>
+            </div>
+
+
+          </ion-col>
+          
+
+          <!---End Share Section-->
+      </ion-row>
+
+  </ion-grid>
+</ion-content>

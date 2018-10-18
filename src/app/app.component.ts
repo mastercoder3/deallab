@@ -5,6 +5,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { LoginPage } from '../pages/login/login';
+import { UploadealsPage } from '../pages/uploadeals/uploadeals';
+import { Login1Page } from '../pages/login1/login1';
+import { CpasswordPage } from '../pages/cpassword/cpassword';
+import { UsernamePage } from '../pages/username/username';
+import { DeleteAccountPage } from '../pages/delete-account/delete-account';
+import { DataRequestPage } from '../pages/data-request/data-request';
+
+
+
 
 @Component({
   templateUrl: 'app.html'
@@ -12,7 +22,7 @@ import { ListPage } from '../pages/list/list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
 
