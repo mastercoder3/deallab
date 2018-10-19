@@ -23,6 +23,7 @@ import { CpasswordPage } from '../pages/cpassword/cpassword';
 import { UsernamePage } from '../pages/username/username';
 import { DeleteAccountPage } from '../pages/delete-account/delete-account';
 import { DataRequestPage } from '../pages/data-request/data-request';
+import { DealPage } from '../pages/deal/deal';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DataRequestPage } from '../pages/data-request/data-request';
     CpasswordPage,
     UsernamePage,
     DeleteAccountPage,
-    DataRequestPage
+    DataRequestPage,
+    DealPage
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ import { DataRequestPage } from '../pages/data-request/data-request';
     CpasswordPage,
     UsernamePage,
     DeleteAccountPage,
-    DataRequestPage
+    DataRequestPage,
+    DealPage
     ],
   providers: [
     StatusBar,

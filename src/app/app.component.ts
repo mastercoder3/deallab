@@ -12,6 +12,7 @@ import { CpasswordPage } from '../pages/cpassword/cpassword';
 import { UsernamePage } from '../pages/username/username';
 import { DeleteAccountPage } from '../pages/delete-account/delete-account';
 import { DataRequestPage } from '../pages/data-request/data-request';
+import { DealPage } from '../pages/deal/deal';
 
 
 
@@ -22,7 +23,7 @@ import { DataRequestPage } from '../pages/data-request/data-request';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = DealPage;
 
   pages: Array<{title: string, component: any}>;
 

@@ -1,0 +1,65 @@
+<!--- Theme Parallax - New list -->
+<ion-header header-ios>
+  <ion-navbar transparent [ngClass]="{'active':isClassActive()}">
+    <!-- <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-title ></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content elastic-header style="background-color:white">
+  <!-- Parallax Big Image -->
+    <!--Parallax Header Top-->
+    <div parallax-header *ngIf="data != null">
+      <img src="./../../assets/images/background/33.jpg" >
+      <!--Parallax Title -->
+      <!-- <h2 no-margin parallax-title no-margin>{{data.title}}</h2> -->
+      <!--Parallax Subtitle -->
+      <!-- <h2 parallax-subtitle no-margin>{{data.subtitle}}</h2> -->
+      
+
+  </div>
+  <ion-icon name="star"></ion-icon>
+  <ion-icon ios="ios-redo" md="md-redo" style="font-size:50px;"></ion-icon>
+
+
+  <img right style="font-size:1px;"  src="./../../assets/images/background/2.png">
+
+  <br>
+  <br>
+  <br>
+
+  
+      
+      <ion-label text-center style="font-style: normal;">COUPON TITLE</ion-label>
+      <br>
+
+
+         <ion-row center>
+           <ion-col col-4 style="min-width:30% !important"></ion-col>
+            <ion-col width-50 center col-8>
+                <ion-label style="font-style: normal;"><strong>DESCRIPTION</strong></ion-label>
+              <p style="position: relative; bottom: 8px !important;">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing
+                  elit, sed do eiusmod tempor incididunt ut labore et
+              </p>
+            </ion-col>
+            </ion-row>
+
+  <!--Content-->
+  <ion-grid no-padding>
+    <ion-row *ngIf="data != null">
+      <ion-col col-12>
+        <ion-list no-margin>
+          <ion-item default-item no-padding no-lines *ngFor="let item of data.items;let i = index" (click)="onEvent('onItemClick', item)">
+            <ion-item-divider no-lines>
+              <!--Content Subtitle-->
+              <!--Content Badge-->
+            </ion-item-divider>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
