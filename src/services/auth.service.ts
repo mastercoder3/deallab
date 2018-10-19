@@ -5,19 +5,12 @@ import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthService {
-    private user: firebase.User;
     
 
-	constructor(public afAuth: AngularFireAuth) {
-		afAuth.authState.subscribe(user => {
-			this.user = user;
-		});
-	}
+	constructor(public afAuth: AngularFireAuth) {	}
 
-	signInWithEmail(credentials) {
-		console.log('Sign in with email');
-		return this.afAuth.auth.signInWithEmailAndPassword(credentials.email,
-			 credentials.password);
+	login(credentials){
+		return this.afAuth.auth.signInWithEmailAndPassword(credentials.email, credentials.password);
 	}
 
 	signUp(credentials) {
@@ -25,11 +18,11 @@ export class AuthService {
 	}
 
 	get authenticated(): boolean {
-		return this.user !== null;
+		return //this.user !== null;
 	}
 
 	getEmail() {
-		return this.user && this.user.email;
+		return //this.user && this.user.email;
 	}
 
 	signOut(): Promise<void> {

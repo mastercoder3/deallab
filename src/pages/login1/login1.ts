@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AuthService } from '../../services/auth.service';
+import { FirestoreProvider } from '../../providers/firestore/firestore';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the Login1Page page.
@@ -31,12 +34,17 @@ export class Login1Page {
   @Input() events: any;
 
   public username: string;
+  public email : string;
+  public number : number;
   public password: string;
+
+  public userData;
 
   private isUsernameValid: boolean = true;
   private isPasswordValid: boolean = true;
+  private credentials;
 
-  constructor() { }
+  constructor(private navCtrl: NavController,private auth : AuthService, private firestore : FirestoreProvider) { }
 
   onEvent = (event: string): void => {
       if (event == "onLogin" && !this.validate()) {
@@ -50,15 +58,37 @@ export class Login1Page {
       }
     }
 
+    signup(){
+        if (this.validate()) {
+            this.credentials = {
+                email: this.email,
+                password: this.password
+            }
+            this.auth.signUp(this.credentials).then(
+                resp => {
+                    this.userData = {
+                        email: this.email,
+                        number: this.number,
+                        username: this.username
+                    }
+                    this.firestore.saveUser(resp.user.uid, this.userData);
+                    this.navCtrl.push(LoginPage)
+                }
+            )
+        }
+    }
+
+    toggleForm(){
+        this.navCtrl.push(LoginPage);
+    }
+
     validate():boolean {
       this.isUsernameValid = true;
       this.isPasswordValid = true;
-      if (!this.username ||this.username.length == 0) {
-          this.isUsernameValid = false;
-      }
 
-      if (!this.password || this.password.length == 0) {
-          this.isPasswordValid = false;
+      if (!this.password || this.password.length == 0 && !this.username || this.username.length == 0) {
+        this.isPasswordValid = false;
+        this.isUsernameValid = false;
       }
 
       return this.isPasswordValid && this.isUsernameValid;

@@ -39,9 +39,9 @@
             
             <div  text-center>
               
-              <button ion-button default-button block text-capitalize box-shadow style="margin-top: 60px;" (click)="onEvent('onLogin')">{{data.login1}}</button>
+              <button ion-button default-button block text-capitalize box-shadow style="margin-top: 60px;" (click)="signup()">{{data.login1}}</button>
 
-              <hr class="hr-text" data-content="or Log in using">
+              <a class="hr-text" data-content="or Log in using" (click) = 'toggleForm()'>Login</a>
 
             
              <button ion-button default-button block text-capitalize box-shadow style="margin-top: 40px;" (click)="onEvent('onLogin')">{{data.login}}</button>
