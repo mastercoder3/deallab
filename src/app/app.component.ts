@@ -22,7 +22,7 @@ import { DataRequestPage } from '../pages/data-request/data-request';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = Login1Page;
 
   pages: Array<{title: string, component: any}>;
 
