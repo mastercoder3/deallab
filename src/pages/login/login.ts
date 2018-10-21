@@ -1,11 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NavController, IonicPage } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { AuthService } from '../../services/auth.service';
-
-import { SignupPage } from '../signup/signup';
-import { Login1Page } from '../login1/login1';
 
 @IonicPage()
 @Component({
@@ -56,19 +52,19 @@ export class LoginPage {
 
 
 
-		login(){
-			if (true) {
-				this.credentials = {
-						email: this.email,
-						password: this.password
-				}
-				this.auth.login(this.credentials).then(
-					() => this.navCtrl.setRoot(HomePage),
-				error => this.loginError = error.message
-			);
-				
-		}
-		}
+    login(){
+        if (true) {
+            this.credentials = {
+                    email: this.email,
+                    password: this.password
+            }
+            this.auth.login(this.credentials).then(
+                () => this.navCtrl.setRoot(HomePage),
+            error => this.loginError = error.message
+            );
+        }
+    
+    }
 
 
 

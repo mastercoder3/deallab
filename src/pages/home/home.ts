@@ -1,6 +1,5 @@
 import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
-import { SignupPage } from '../signup/signup';
 
 import { Component, Input, ViewChild } from '@angular/core';
 import { IonicPage, Content } from 'ionic-angular';

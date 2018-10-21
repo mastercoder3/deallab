@@ -1,6 +1,5 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams,Content, ItemSliding } from 'ionic-angular';
-import { SignupPage } from '../signup/signup';
 
 @IonicPage()
 @Component({

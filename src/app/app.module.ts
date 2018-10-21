@@ -6,7 +6,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
 
 import { ListPage } from '../pages/list/list';
 import { AngularFireModule } from '@angular/fire';
@@ -24,6 +23,7 @@ import { UsernamePage } from '../pages/username/username';
 import { DeleteAccountPage } from '../pages/delete-account/delete-account';
 import { DataRequestPage } from '../pages/data-request/data-request';
 import { DealPage } from '../pages/deal/deal';
+import { AdddealsProvider } from '../providers/adddeals/adddeals';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,6 @@ import { DealPage } from '../pages/deal/deal';
     HomePage,
     ListPage,
     LoginPage,
-    SignupPage,
     UploadealsPage,
     Login1Page,
     CpasswordPage,
@@ -52,7 +51,6 @@ import { DealPage } from '../pages/deal/deal';
     HomePage,
     ListPage,
     LoginPage,
-    SignupPage,
     UploadealsPage,
     Login1Page,
     CpasswordPage,
@@ -68,7 +66,8 @@ import { DealPage } from '../pages/deal/deal';
     AuthService, 
     AngularFireAuthModule,
     AngularFireAuth,
-    FirestoreProvider
+    FirestoreProvider,
+    AdddealsProvider
   ]
 })
 export class AppModule {}
