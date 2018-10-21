@@ -4,7 +4,6 @@ import { NavController, IonicPage } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { AuthService } from '../../services/auth.service';
 
-import { SignupPage } from '../signup/signup';
 import { Login1Page } from '../login1/login1';
 
 @IonicPage()

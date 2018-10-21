@@ -6,7 +6,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
 
 import { ListPage } from '../pages/list/list';
 import { AngularFireModule } from '@angular/fire';
@@ -31,7 +30,6 @@ import { DealPage } from '../pages/deal/deal';
     HomePage,
     ListPage,
     LoginPage,
-    SignupPage,
     UploadealsPage,
     Login1Page,
     CpasswordPage,
@@ -52,7 +50,6 @@ import { DealPage } from '../pages/deal/deal';
     HomePage,
     ListPage,
     LoginPage,
-    SignupPage,
     UploadealsPage,
     Login1Page,
     CpasswordPage,

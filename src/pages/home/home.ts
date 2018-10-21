@@ -1,6 +1,5 @@
 import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
-import { SignupPage } from '../signup/signup';
 
 import { Component, Input, ViewChild } from '@angular/core';
 import { IonicPage, Content } from 'ionic-angular';
@@ -68,9 +67,6 @@ export class HomePage {
     this.navCtrl.push(LoginPage);
   }
 
-  register(){
-    this.navCtrl.push(SignupPage); 
-  }
 
 
   onEvent(event: string, item: any, e: any) {
