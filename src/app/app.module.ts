@@ -25,6 +25,7 @@ import { DataRequestPage } from '../pages/data-request/data-request';
 import { DealPage } from '../pages/deal/deal';
 import { AddealsPage } from '../pages/addeals/addeals';
 import { AddealsPageModule } from '../pages/addeals/addeals.module';
+import { AdddealsProvider } from '../providers/adddeals/adddeals';
 
 
 
@@ -75,7 +76,8 @@ import { AddealsPageModule } from '../pages/addeals/addeals.module';
     AuthService, 
     AngularFireAuthModule,
     AngularFireAuth,
-    FirestoreProvider
+    FirestoreProvider,
+    AdddealsProvider
   ]
 })
 export class AppModule {}
