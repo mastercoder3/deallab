@@ -23,7 +23,7 @@ import { DealPage } from '../pages/deal/deal';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = Login1Page;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
 

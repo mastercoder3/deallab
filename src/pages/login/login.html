@@ -1,43 +1,53 @@
-<ion-header>
-	<ion-navbar>
-
-		<ion-title>Log in</ion-title>
-	</ion-navbar>
-</ion-header>
-
-<ion-content>
-	<form (ngSubmit)="login()" [formGroup]="loginForm">
-		<ion-list inset>
-
-			<ion-item >
-				<ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
-			</ion-item>
-
-			<ion-item >
-				<ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
-			</ion-item>
-
-		</ion-list>
-
-		<div padding-horizontal>
-			<div class="form-error">{{loginError}}</div>
-
-			<button ion-button full type="submit" [disabled]="!loginForm.valid">Log in</button>
-			<div class="login-footer">
-				<p>
-					<a href="#">Forgot password?</a>
-					If you're a new user, please sign up.
-				</p>
-			</div>
-
-			<ion-list>
-
-
-				<button ion-button icon-left block clear (click)="signup()">
-					<ion-icon name="person-add"></ion-icon>
-					Sign up
-				</button>
-			</ion-list>
-		</div>
-	</form>
-</ion-content>
+<!-- Themes Login + logo 2 -->
+<ion-content has-header *ngIf="data != null" >
+		<ion-grid *ngIf="data != null">
+			<ion-row padding-left padding-right>
+				<ion-col text-center col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+	  
+	  
+				  <!--  <button ion-button text-capitalize button-clear clear float-left (click)="onEvent('onSkip')">{{data.skip}}</button>
+					<button ion-button text-capitalize button-clear clear float-right (click)="onEvent('onRegister')">{{data.register}}</button>-->
+	  
+				</ion-col>
+	  
+	  
+	  
+				<ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6 form>
+				  <ion-item transparent text-center>
+					<!---Logo Title-->
+					<h1>Join us</h1>
+					<h5 ion-text no-margin text-wrap>{{data.title}}</h5>
+	  
+					<br>
+					
+	  
+					
+				  </ion-item>
+				  <!---Input field username-->
+					
+					<ion-input text-left required type="text" [placeholder]="data.email" [(ngModel)]="email" ></ion-input>
+					<hr>
+				  
+	  
+				  <!---Input field password-->
+				 
+					<ion-input text-left required type="password" [placeholder]="data.password" [(ngModel)]="password"></ion-input>
+					<hr>
+					
+				  
+				  <div  text-center>
+					
+					<button ion-button default-button block text-capitalize box-shadow style="margin-top: 60px;" (click)="login()">Login</button>
+	  
+				  </div>
+	  
+	  
+				</ion-col>
+				
+	  
+				<!---End Share Section-->
+			</ion-row>
+	  
+		</ion-grid>
+	  </ion-content>
+	  
