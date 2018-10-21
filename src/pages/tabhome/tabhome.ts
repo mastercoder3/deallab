@@ -27,12 +27,34 @@ export class TabhomePage {
                 
             
   }
+  
+
+  data1 = {
+    "items": [
+      {
+          "id": 1,
+          "title": "Victoria Simpson",
+          "subtitle": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+          "image": "assets/images/avatar/24.jpg",
+          "imageAlt": "avatar",
+          "button": "Read"
+      },
+      {
+          "id": 2,
+          "title": "Samantha Reynolds",
+          "subtitle": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+          "image": "assets/images/avatar/10.jpg",
+          "imageAlt": "avatar",
+          "button": "Read"
+      }
+    ]
+  }
   @Input() events: any;
 
   searchTerm: any = "";
   allItems: any;
 
-  constructor() { }
+  constructor(private navCtrl: NavController) { }
 
   getItems(event: any): void {
     if (!this.allItems) {
@@ -41,6 +63,10 @@ export class TabhomePage {
     this.data.items = this.allItems.filter((item) => {
       return item.title.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1;
     });
+  }
+
+  addeals(){
+    this.navCtrl.push("AddealsPage");
   }
 
   onEvent(event: string, item: any) {//ITEM [EVENT OR SELECTED ITEM]

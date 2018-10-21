@@ -5,6 +5,7 @@ import { HomePage } from '../home/home';
 import { AuthService } from '../../services/auth.service';
 
 import { Login1Page } from '../login1/login1';
+import { DealPage } from '../deal/deal';
 
 @IonicPage()
 @Component({
@@ -62,7 +63,7 @@ export class LoginPage {
 						password: this.password
 				}
 				this.auth.login(this.credentials).then(
-					() => this.navCtrl.setRoot(HomePage),
+					() => this.navCtrl.setRoot(DealPage),
 				error => this.loginError = error.message
 			);
 				

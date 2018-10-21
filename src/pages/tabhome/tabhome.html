@@ -34,8 +34,33 @@
           <div search-bar-bcg padding-horizontal>
             <!-- Header Title -->
             <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="onEvent('onTextChange', $event)"></ion-searchbar>
-            <button ion-button>Add deals</button>
+            <button ion-button (click) = "addeals()"  >Add deals</button>
           </div>
+          
+
+
+
+                <ion-list no-margin>
+                  <ion-item default-item no-padding no-lines *ngFor="let item of data1.items;let i = index" (click)="onEvent('onItemClick', item)">
+                    <ion-item-divider no-lines>
+                      <!--Content Avatar-->
+                      <ion-avatar item-start>
+                        <img [src]="item.image" [alt]="item.imageAlt">
+                      </ion-avatar>
+                      <!--Content Title-->
+                      <h2 item-title>{{item.title}}</h2>
+                    </ion-item-divider>
+                    <ion-item-divider no-lines>
+                      <!--Content Subtitle-->
+                      <h3 item-subtitle text-wrap>{{item.subtitle}}</h3>
+                      <!--Content Badge-->
+                      <ion-badge box-shadow badge-light item-end>{{item.button}}</ion-badge>
+                    </ion-item-divider>
+                  </ion-item>
+                </ion-list>
+            
+
+
 
         </ion-col>
       </ion-row>

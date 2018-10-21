@@ -23,6 +23,10 @@ import { UsernamePage } from '../pages/username/username';
 import { DeleteAccountPage } from '../pages/delete-account/delete-account';
 import { DataRequestPage } from '../pages/data-request/data-request';
 import { DealPage } from '../pages/deal/deal';
+import { AddealsPage } from '../pages/addeals/addeals';
+import { AddealsPageModule } from '../pages/addeals/addeals.module';
+
+
 
 @NgModule({
   declarations: [
@@ -37,9 +41,11 @@ import { DealPage } from '../pages/deal/deal';
     DeleteAccountPage,
     DataRequestPage,
     DealPage
+    
   ],
   imports: [
     BrowserModule,
+    AddealsPageModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig)
 
@@ -56,7 +62,11 @@ import { DealPage } from '../pages/deal/deal';
     UsernamePage,
     DeleteAccountPage,
     DataRequestPage,
-    DealPage
+    DealPage,
+    AddealsPage
+
+    
+
     ],
   providers: [
     StatusBar,

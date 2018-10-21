@@ -17,13 +17,14 @@ import { DealPage } from '../pages/deal/deal';
 
 
 
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = DealPage;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
 
