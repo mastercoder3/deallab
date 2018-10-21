@@ -67,9 +67,6 @@ export class HomePage {
     this.navCtrl.push(LoginPage);
   }
 
-  register(){
-    this.navCtrl.push(SignupPage); 
-  }
 
 
   onEvent(event: string, item: any, e: any) {
