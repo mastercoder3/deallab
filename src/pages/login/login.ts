@@ -3,11 +3,6 @@ import { NavController, IonicPage } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { AuthService } from '../../services/auth.service';
 
-<<<<<<< HEAD
-=======
-import { Login1Page } from '../login1/login1';
-
->>>>>>> 4337ca37cb489585d22aef3090902c912abcc153
 @IonicPage()
 @Component({
   selector: 'page-login',
