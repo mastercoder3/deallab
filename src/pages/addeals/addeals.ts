@@ -1,5 +1,11 @@
 import { Component, Input,ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { FirestoreProvider } from '../../providers/firestore/firestore';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AdddealsProvider } from '../../providers/adddeals/adddeals';
+import { map } from 'rxjs/operators';
+
+
 
 /**
  * Generated class for the AddealsPage page.
@@ -14,58 +20,68 @@ import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
   templateUrl: 'addeals.html',
 })
 export class AddealsPage {
-  @Input() data = {
-    "background"     : "assets/images/background/39.jpg",
-        "forgotPassword" : "Forgot password?",
-        "email"           : "Description",
-        "username"       : "Title",
-        "password"       : "Category",
-        "number":        "Phone number",
-        
-        "login"          : "Instagram",
-        "logo"           : "assets/images/logo/2.png",
-        "errorUser"       : "Field can't be empty",
-        "errorPassword"   : "Field can't be empty"
-  }
+  @Input() data : any;
   @Input() events: any;
 
-  public username: string;
-  public email : string;
-  public number : number;
-  public password: string;
+  deals;
+  
+  uid;
 
-  public userData;
-
-  private isUsernameValid: boolean = true;
-  private isPasswordValid: boolean = true;
-  private credentials;
-
-  constructor(private navCtrl: NavController) { }
-
-  onEvent = (event: string): void => {
-      if (event == "onLogin" && !this.validate()) {
-          return ;
-      }
-      if (this.events[event]) {
-          this.events[event]({
-              'username' : this.username,
-              'password' : this.password
-          });
-      }
-    }
-
-
+  dealsData={
+   title:'',
+   description:'',
+   link:'' ,
+   category:'',
+   userId:''
+  }
    
-    validate():boolean {
-      this.isUsernameValid = true;
-      this.isPasswordValid = true;
+  
+  constructor(public auth : AngularFireAuth,private navCtrl: NavController,public api: AdddealsProvider) { }
 
-      if (!this.password || this.password.length == 0 && !this.username || this.username.length == 0) {
-        this.isPasswordValid = false;
-        this.isUsernameValid = false;
-      }
+  //adding deals to the firestore
+addDeals(){
+  //create a deal object
+  let data={
+    title: this.dealsData.title,
+    description: this.dealsData.description,
+    link: this.dealsData.link,
+    category: this.dealsData.category,
+    userId: this.auth.auth.currentUser.uid,
+    status:'dissapproved'
+  }
+ 
 
-      return this.isPasswordValid && this.isUsernameValid;
-   }
+  //push object to firestore
+  this.api.createDeal(data).then(resp=>{
+    console.log('deal created');
+  },err=>{
+    console.log(`error found`)
+  })
+}
+
+//getting the deal from the firestore and assigning to the 'deals' object
+getDeals(){
+  this.uid = localStorage.getItem('uid');
+  console.log(this.uid);
+  this.api.getDeal(this.uid).subscribe(res=>{
+    this.deals = res;
+  })
+
+  // this.getProducts();
+}
+
+
+
+
+// getDeals(){
+//   return this.api.getDeals().pipe(
+//     map(actions => actions.map(a=>{
+//       const data = a.payload.doc.data() ;
+//         const id = a.payload.doc.id;
+//         return { id, ...data };
+//     }))).subscribe(res=>{
+//       this.deals = res;
+//     })
+// }
 
 }

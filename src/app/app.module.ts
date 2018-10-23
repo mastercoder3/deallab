@@ -26,7 +26,11 @@ import { DealPage } from '../pages/deal/deal';
 import { AddealsPage } from '../pages/addeals/addeals';
 import { AddealsPageModule } from '../pages/addeals/addeals.module';
 import { AdddealsProvider } from '../providers/adddeals/adddeals';
-
+import { HttpClientModule } from '@angular/common/http'; 
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { UpdateDealsPage } from "../pages/update-deals/update-deals";
+import { UpdateDealsPageModule } from '../pages/update-deals/update-deals.module';
+import { HelperProvider } from '../providers/helper/helper';
 
 
 @NgModule({
@@ -41,13 +45,18 @@ import { AdddealsProvider } from '../providers/adddeals/adddeals';
     UsernamePage,
     DeleteAccountPage,
     DataRequestPage,
-    DealPage
+    DealPage,
+    
+    
     
   ],
   imports: [
     BrowserModule,
     AddealsPageModule,
+    AngularFirestoreModule,
+    UpdateDealsPageModule,
     IonicModule.forRoot(MyApp),
+    HttpClientModule,
     AngularFireModule.initializeApp(firebaseConfig)
 
   ],
@@ -64,10 +73,9 @@ import { AdddealsProvider } from '../providers/adddeals/adddeals';
     DeleteAccountPage,
     DataRequestPage,
     DealPage,
-    AddealsPage
-
+    AddealsPage,
+  
     
-
     ],
   providers: [
     StatusBar,
@@ -77,7 +85,8 @@ import { AdddealsProvider } from '../providers/adddeals/adddeals';
     AngularFireAuthModule,
     AngularFireAuth,
     FirestoreProvider,
-    AdddealsProvider
+    AdddealsProvider,
+    HelperProvider
   ]
 })
 export class AppModule {}

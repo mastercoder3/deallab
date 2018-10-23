@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import firebase from "firebase";
 import "firebase/firestore";
+import { AngularFirestore } from 'angularfire2/firestore';
 /*
   Generated class for the FirestoreProvider provider.
 
@@ -12,10 +13,19 @@ import "firebase/firestore";
 export class FirestoreProvider {
 
   db = firebase.firestore();
+  
 
-  constructor() {
+  constructor(public firestore : AngularFirestore) {
     console.log('Hello FirestoreProvider Provider');
   }
+
+  // getApprovedDeals(){
+  //   return this.firestore.collection('deals', ref=> ref.where('status', '==', 'approved')).snapshotChanges();
+    
+  // }
+
+  
+
 
 //writes the data on the firestore
   saveUser(uid,data){

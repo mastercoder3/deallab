@@ -15,50 +15,52 @@
     <ion-grid no-padding>
       <ion-row>
         <!-- List Search-->
-        <ion-col col-12 *ngIf="data != null">
+        <ion-col col-12 >
           <!-- Content List -->
           <ion-list no-margin>
-            <ion-item default-item no-lines (click)="onEvent('onItemClick', item)">
+            <ion-item default-item no-lines >
               <ion-avatar item-start>
                 <img >
               </ion-avatar>
               <!--Title -->
-              <h2 ion-text item-title>{{data.items.title}}</h2>
+              <h2 ion-text item-title>{{user?.username}}</h2>
               <!--Subtitle -->
-              <p ion-text item-subtitle>{{data.items.subtitle}}</p>
-              <span span-medium>
+              <p ion-text item-subtitle>{{user?.email}}</p>
+              <!-- <span span-medium>
                 {{data.items.detail}}
-              </span>
+              </span> -->
             </ion-item>
           </ion-list>
           <div search-bar-bcg padding-horizontal>
             <!-- Header Title -->
             <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="onEvent('onTextChange', $event)"></ion-searchbar>
-            <button ion-button (click) = "addeals()"  >Add deals</button>
           </div>
           
 
 
+          <button ion-button (click) = "addeals()"  >Add deals</button>
+
 
                 <ion-list no-margin>
-                  <ion-item default-item no-padding no-lines *ngFor="let item of data1.items;let i = index" (click)="onEvent('onItemClick', item)">
+                  <ion-item default-item no-padding no-lines *ngFor="let item of deals;let i = index" >
                     <ion-item-divider no-lines>
                       <!--Content Avatar-->
                       <ion-avatar item-start>
-                        <img [src]="item.image" [alt]="item.imageAlt">
+                        <!-- <img [src]="item.image" [alt]="item.title"> -->
                       </ion-avatar>
                       <!--Content Title-->
                       <h2 item-title>{{item.title}}</h2>
                     </ion-item-divider>
                     <ion-item-divider no-lines>
                       <!--Content Subtitle-->
-                      <h3 item-subtitle text-wrap>{{item.subtitle}}</h3>
-                      <!--Content Badge-->
-                      <ion-badge box-shadow badge-light item-end>{{item.button}}</ion-badge>
+                      <h3 item-subtitle text-wrap>{{item.category}}</h3>
+                      <button ion-button (click) = "updateDeals(item.id)">Update Deal</button>
+                      <button (click) = "deleteDeal(item.id)">Delete deal</button>
                     </ion-item-divider>
                   </ion-item>
                 </ion-list>
             
+                
 
 
 

@@ -1,6 +1,6 @@
 <!-- Themes Login + logo 2 -->
-<ion-content has-header *ngIf="data != null" >
-  <ion-grid *ngIf="data != null">
+<ion-content has-header  >
+  <ion-grid   >
       <ion-row padding-left padding-right>
           <ion-col text-center col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
 
@@ -24,23 +24,23 @@
             </ion-item>
             <!---Input field username-->
             <button ion-button>Upload Image</button>
-              <ion-input transparent text-left required type="text" [placeholder]="data.username" [(ngModel)]="username" ></ion-input>
+              <ion-input transparent text-left required type="text" placeholder="title" [(ngModel)]="dealsData.title"></ion-input>
               <hr>
-              <ion-input transparent text-left required type="text"[placeholder]="data.link" [(ngModel)]="link"  ></ion-input>
+              <ion-input transparent text-left required type="text"placeholder="description" [(ngModel)]="dealsData.description"></ion-input>
               <hr>
-              <ion-input text-left required type="text" [placeholder]="data.email" [(ngModel)]="email" ></ion-input>
+              <ion-input text-left required type="text" placeholder="link" [(ngModel)]="dealsData.link"></ion-input>
               <hr>
             
 
             <!---Input field password-->
            
-              <ion-input text-left required type="password" [placeholder]="data.password" [(ngModel)]="password"></ion-input>
+              <ion-input text-left required type="text" placeholder="category" [(ngModel)]="dealsData.category"></ion-input>
               <hr>
               
             
             <div  text-center>
               
-              <button ion-button default-button block text-capitalize box-shadow style="margin-top: 60px;">Submit</button>
+              <button ion-button default-button block text-capitalize box-shadow style="margin-top: 60px;" (click)="addDeals()">Submit</button>
 
 
             

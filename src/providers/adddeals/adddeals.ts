@@ -10,27 +10,34 @@ import { AngularFirestore } from 'angularfire2/firestore';
 */
 @Injectable()
 export class AdddealsProvider {
+  
 
   constructor(public http: HttpClient, public firestore: AngularFirestore) {}
 
+
+
+getInfluencer(uid){
+  return this.firestore.doc('users/'+ uid).valueChanges();
+}
+
   createDeal(data) {
-    return this.firestore.collection('project').add(data);
+    return this.firestore.collection('deal').add(data);
   }
 
   updateDeal(uid, data) {
-    return this.firestore.collection('project').doc(uid).update(data);
+    return this.firestore.collection('deal').doc(uid).update(data);
   }
 
   deleteDeal(uid) {
-    return this.firestore.collection('project').doc(uid).delete();
+    return this.firestore.collection('deal').doc(uid).delete();
   }
 
   getDeal(uid) {
-    return this.firestore.collection('project').doc(uid).valueChanges();
+    return this.firestore.collection('deal').doc(uid).valueChanges();
   }
   
   getDeals() {
-    return this.firestore.collection('project').snapshotChanges();
+    return this.firestore.collection('deal').snapshotChanges();
   }
 
 }

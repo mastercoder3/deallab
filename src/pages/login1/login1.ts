@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { FirestoreProvider } from '../../providers/firestore/firestore';
 import { LoginPage } from '../login/login';
 
+
 /**
  * Generated class for the Login1Page page.
  *
@@ -42,8 +43,9 @@ export class Login1Page {
   private isUsernameValid: boolean = true;
   private isPasswordValid: boolean = true;
   private credentials;
+  
 
-  constructor(private navCtrl: NavController,private auth : AuthService, private firestore : FirestoreProvider) { }
+  constructor(private navCtrl: NavController,private auth : AuthService, private firestore: FirestoreProvider) { }
 
   onEvent = (event: string): void => {
       if (event == "onLogin" && !this.validate()) {
