@@ -13,6 +13,9 @@ import { UsernamePage } from '../pages/username/username';
 import { DeleteAccountPage } from '../pages/delete-account/delete-account';
 import { DataRequestPage } from '../pages/data-request/data-request';
 import { DealPage } from '../pages/deal/deal';
+import { TabhomePage } from '../pages/tabhome/tabhome';
+import { StartingPage } from '../pages/starting/starting';
+
 
 
 
@@ -23,9 +26,7 @@ import { DealPage } from '../pages/deal/deal';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
-  rootPage: any = LoginPage;
-
+  rootPage: any = Login1Page;
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {

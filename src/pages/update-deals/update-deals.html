@@ -1,0 +1,129 @@
+<!-- Themes Login + logo 2 -->
+<ion-content  >
+  <ion-grid   >
+      <ion-row>
+          <ion-col text-center col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+
+
+            <!--  <button ion-button text-capitalize button-clear clear float-left (click)="onEvent('onSkip')">{{data.skip}}</button>
+              <button ion-button text-capitalize button-clear clear float-right (click)="onEvent('onRegister')">{{data.register}}</button>-->
+
+          </ion-col>
+
+
+
+          <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6 form *ngIf="itemId">
+            <ion-item transparent text-center>
+                
+                    
+                  
+                  <!---Logo Title-->
+              <h1>UPDATE DEAL</h1>
+              <button navPop ion-button icon-only style="margin-left:-90%; margin-top:-15%; background-color: white; color: #075ea4;">
+                  <ion-icon color="light" name="arrow-round-back"></ion-icon>
+                </button>
+
+              <br>
+              
+
+              
+            </ion-item>
+            <!---Input field username-->
+
+            <ion-label><strong>DEAL LINK</strong></ion-label>
+            <ion-input type="text" placeholder="0.00" [(ngModel)]="itemId.link" style="width: 320px;
+         padding: 2px;
+         border: 1px solid gray;
+         margin: 0;
+         border-radius: 5px;
+         color: gray">
+           </ion-input>
+
+           <ion-label><strong>PRICE</strong></ion-label>
+            <ion-input type="text" placeholder="0.00" [(ngModel)]="itemId.price" style="width: 320px;
+         padding: 2px;
+         border: 1px solid gray;
+         margin: 0;
+         border-radius: 5px;
+         color: gray">
+           </ion-input>
+
+           <ion-label><strong>VOUCHER CODE</strong></ion-label>
+            <ion-input type="text" placeholder="Enter the voucher code" [(ngModel)]="itemId.coupon" style="width: 320px;
+         padding: 2px;
+         border: 1px solid gray;
+         margin: 0;
+         border-radius: 5px;
+         color: gray">
+           </ion-input>
+
+           <ion-label><strong>TITLE</strong></ion-label>
+            <ion-input type="text" placeholder="A short descriptive title of your deal" [(ngModel)]="itemId.title" style="width: 320px;
+         padding: 2px;
+         border: 1px solid gray;
+         margin: 0;
+         border-radius: 5px;
+         color: gray">
+           </ion-input>
+
+          
+           
+           <ion-label><strong>DESCRIPTION</strong></ion-label>
+           <ion-textarea text-wrap type="text" placeholder="Here you can describe the deal in your
+           own words and explain to  the users why it's a good deal!" [(ngModel)]="itemId.description" style="width: 320px;
+        
+        height: 14%;
+        padding: 2px;
+        border: 1px solid gray;
+        margin: 0;
+        border-radius: 5px;
+        color: gray">
+          </ion-textarea>
+
+
+           <ion-label><strong>DEAL STARTS</strong></ion-label>
+            <ion-input type="text" placeholder="DD/MM/YY" [(ngModel)]="itemId.startdate" style="width: 320px;
+         padding: 2px;
+         border: 1px solid gray;
+         margin: 0;
+         border-radius: 5px;
+         color: gray">
+           </ion-input>
+
+           <ion-label><strong>DEAL EXPIRES</strong></ion-label>
+            <ion-input type="text" placeholder="DD/MM/YY" [(ngModel)]="itemId.enddate" style="width: 320px;
+         padding: 2px;
+         border: 1px solid gray;
+         margin: 0;
+         border-radius: 5px;
+         color: gray">
+           </ion-input>
+
+           <ion-label><strong>CATEGORY</strong></ion-label>
+            <ion-input type="text" placeholder="Category" [(ngModel)]="itemId.category" style="width: 320px;
+         padding: 2px;
+         border: 1px solid gray;
+         margin: 0;
+         border-radius: 5px;
+         color: gray">
+           </ion-input>
+              
+            
+            <div text-center>
+              
+              <button ion-button default-button block text-capitalize box-shadow style="margin-top: 30px;background-color: #075ea4;" (click)="update(itemId)">Submit</button>
+
+
+            
+             
+            </div>
+
+
+          </ion-col>
+          
+
+          <!---End Share Section-->
+      </ion-row>
+
+  </ion-grid>
+</ion-content>

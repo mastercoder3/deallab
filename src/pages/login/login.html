@@ -1,47 +1,51 @@
 <!-- Themes Login + logo 2 -->
-<ion-content has-header *ngIf="data != null" >
-		<ion-grid *ngIf="data != null">
-			<ion-row padding-left padding-right>
-				<ion-col text-center col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+<ion-content>
+		<ion-grid>
+			<ion-row>
+				<!-- <ion-col text-center col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6> -->
 	  
 	  
 				  <!--  <button ion-button text-capitalize button-clear clear float-left (click)="onEvent('onSkip')">{{data.skip}}</button>
 					<button ion-button text-capitalize button-clear clear float-right (click)="onEvent('onRegister')">{{data.register}}</button>-->
 	  
-				</ion-col>
+				<!-- </ion-col> -->
 	  
 	  
 	  
-				<ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6 form>
-				  <ion-item transparent text-center>
-					<!---Logo Title-->
-					<h1>Join us</h1>
-					<h5 ion-text no-margin text-wrap>{{data.title}}</h5>
-	  
-					<br>
+				<ion-col col-12 form>
+				  
+					<!-- <ion-avatar item-start style="margin-top:-35px; width:500%;"> -->
+							<img src="../../assets/images/background/111.png" style="height:35%; width: 100%;">
+						<!-- </ion-avatar> -->
+					<!---Input field username-->
+					<h1 style="color: #F79071"><strong>We missed you</strong></h1>
 					
-	  
-					
-				  </ion-item>
-				  <!---Input field username-->
-					
-					<ion-input text-left required type="text" [placeholder]="data.email" [(ngModel)]="email" ></ion-input>
+					<ion-input text-left required style="padding: 8px;" type="text" placeholder="Email" [(ngModel)]="email" ></ion-input>
 					<hr>
 				  
 	  
 				  <!---Input field password-->
 				 
-					<ion-input text-left required type="password" [placeholder]="data.password" [(ngModel)]="password"></ion-input>
-					<hr>
-					
+					<ion-input text-left required style="padding: 8px;" type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+						<hr>
 				  
 				  <div  text-center>
 					
-					<button ion-button default-button block text-capitalize box-shadow style="margin-top: 60px;" (click)="login()">Login</button>
+					<button ion-button default-button block text-capitalize box-shadow style="margin-top: 23px; background-color: #F79071;" (click)="login()">Login</button>
 	  
-				  </div>
-	  
-	  
+					</div>
+					<ion-row>
+						<ion-col col-4>
+					<p style="font-size: normal;">Not Registered?</p>
+				</ion-col>
+				<ion-col col-3 style="margin-top:0.7%;">
+					<ion-label (click) = "clickSignUp()" style="color:#F79071;"><b>Sign Up</b></ion-label>
+				</ion-col>
+				</ion-row>
+				
+						<ion-label (click) = "homepage()" style="color:#F79071; margin-top:-170%;"><b>Back to Home Page</b></ion-label>
+
+		
 				</ion-col>
 				
 	  

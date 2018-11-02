@@ -1,10 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { FirestoreProvider } from '../../providers/firestore/firestore';
 import { AdddealsProvider } from '../../providers/adddeals/adddeals';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
+import {SelectSearchableModule, SelectSearchableComponent} from 'ionic-select-searchable'
+import { LoginPage } from '../login/login';
+
 /**
  * Generated class for the TabhomePage page.
  *
@@ -18,6 +21,14 @@ import { AngularFireAuth } from '@angular/fire/auth';
   templateUrl: 'tabhome.html',
 })
 export class TabhomePage{
+  // @ViewChild('content') nav: NavController;
+
+  // rootPage:any = LoginPage;
+
+  @ViewChild('myselect') selectComponent: SelectSearchableComponent;
+  user1 = null;
+  userIds = []
+
   dealsData;
 
   data : any;
@@ -26,59 +37,68 @@ export class TabhomePage{
 
   searchTerm: any = "";
   allItems: any;
+  searchCat: any;
+  searchDeals: any;
 
-  constructor(private navCtrl: NavController,public afs : AngularFireAuth, public firestore : AdddealsProvider) { }
+  constructor(private navCtrl: NavController,
+    public afAuth : AngularFireAuth, public firestore : AdddealsProvider,private toastCtrl:ToastController) { }
 
-  getItems(event: any): void {
-    if (!this.allItems) {
-      this.allItems = this.data.items;
-    }
-    this.data.items = this.allItems.filter((item) => {
-      return item.title.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1;
-    });
-  }
+  
 
   deals;
   user;
+  uid;
 
   ionViewDidLoad(){
     this.getDeals();
     this.getUser();
   }
 
-//getting the current user id 
+//getting the current influencer id, which will further use in tabhome.html in getting the 'user'
   getUser(){
-    console.log(this.afs.auth.currentUser.uid);
-    let uid =this.afs.auth.currentUser.uid;
+    console.log(this.afAuth.auth.currentUser);   //
+    let uid = localStorage.getItem('uid');
     //giving getInfluencer the uid and storing the data to the user which we will furthur use in the html
     this.firestore.getInfluencer(uid).subscribe(data=>{
-      this.user = data;
+      this.user = data;  
+       console.log(data)                    //assigning user the data
     })
   }
 
 
-  //getting the data of deals, mapping the data i.e. data,id and savind it in 'deals' object
+  //getting the data of deals, mapping the data i.e. data,id and saving it in 'deals' object
   getDeals(){
-    this.firestore.getDeals().pipe(
-      map(actions => actions.map(a => {
+    this.firestore.getInfluencerDeals(this.uid).pipe(     
+      map(actions => actions.map(a => {      //.map, what kind of data i need i.e. data, id
         const data = a.payload.doc.data() ;
         const id = a.payload.doc.id;
         return { id, ...data };
-      }))).subscribe(response=>{
-        this.deals = response;
-        console.log(this.deals)
-      })
 
+      }))).subscribe(response=>{      //.subscribe, now i need data 
+        this.deals = response;    
+        console.log(this.deals);
+        this.getCat();
+      })
   }
 
+
+
   updateDeals(itemid){
-    this.navCtrl.push("UpdateDealsPage",{id:itemid});
+    this.navCtrl.push("UpdateDealsPage",{item: JSON.stringify(itemid)});
   }
   // updateDeals(id,data){
   //   return this.firestore.updateDeal(id, data).then(res=>{
   //     console.log(`deal updated`);
   //   })
   // }
+
+  viewDeal(item,i){
+    console.log(item.id)
+    this.navCtrl.push("ViewDealPage",{
+      id: item.id
+    }
+    );
+  }
   
 
   addeals(){
@@ -91,19 +111,85 @@ export class TabhomePage{
     })
   }
 
-  onEvent(event: string, item: any) {//ITEM [EVENT OR SELECTED ITEM]
-    if (this.events[event]) {
-      if ('onTextChange' === event) {
-        this.getItems(item);
-        this.events[event](this.searchTerm);
-      } else {
-        this.events[event](item);
-      }
+
+
+  ngOnInit(){
+    this.uid = localStorage.getItem('uid'); //getting the user id and we will pass it in the html
+  }
+
+  viewUser(user){
+    console.log(user)
+    this.navCtrl.push("UsernamePage",{
+      id: user
     }
-    console.log(event);
+    );
+  }
+
+  //searchbar, search query
+  getItems(ev: any) {
+
+
+    const val = ev.target.value;
+
+    // set val to the value of the searchbar
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.searchDeals = this.searchDeals.filter((item) => {
+        return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      }) ;
+    }
+    else{
+      this.getCat();
+    }
+  } 
+  getCat(){
+    this.searchDeals = this.deals;
+  }
+
+  
+  logout(){
+    this.navCtrl.push(LoginPage);
   }
 
 
+
+  
+
+  // userChanged(event: {component: SelectSearchableComponent, value:any}){
+  //     console.log('event', event);
+  // }
+
+  // onClose(){
+  //     let toast = this.toastCtrl.create({
+
+  //       message: 'Thanks for your selection',
+  //       duration: 2000
+  //     });
+  //     toast.present();
+  // }
+
+  // openFromCode(){
+  //   this.selectComponent.open();
+  // }
+
+  // onEvent(event: string, item: any) {//ITEM [EVENT OR SELECTED ITEM]
+  //   if (this.events[event]) {
+  //     if ('onTextChange' === event) {
+  //       this.getItems(item);
+  //       this.events[event](this.searchTerm);
+  //     } else {
+  //       this.events[event](item);
+  //     }
+  //   }
+  //   console.log(event);
+  // }
+
+
+
+
+
+  
     //retrieving data from the firestore (adddeals)
   // ngOnInit(){
   //     this.firestore.getDeals().pipe(map(

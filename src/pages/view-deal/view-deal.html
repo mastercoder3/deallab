@@ -1,0 +1,47 @@
+<!--
+  Generated template for the ViewDealPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <ion-navbar color = "primary">
+    <ion-title>viewDeal</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding style="background-color : white">
+
+    <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6 form *ngIf="viewData">
+        
+        <ion-avatar item-start style="margin-top:-35px; width:100%;">
+            <img src="{{viewData.image}}">
+          </ion-avatar>
+          <!-- <br> -->
+          <h2 item-title text-wrap style="font-weight:600; font-style: inherit; font-size: inherit;">{{viewData.title}} | {{viewData.category}}</h2>
+          <!-- <ion-row> -->
+            <!-- <ion-col col-6> -->
+          <h2 style="color: #a61c00; font-size: normal;"><b>{{viewData.price}}</b></h2>
+            <!-- </ion-col> -->
+            <!-- <ion-col col-6> -->
+        <!-- </ion-col> -->
+        <!-- </ion-row> -->
+          <div style="width: 320px;
+          padding: 10px;
+          border: 1px solid gray;
+          margin: 0;
+          border-radius: 5px;
+          color: gray"><i class="fa fa-upload"></i>Posted On:{{viewData.startdate}}
+          <br><br><ion-icon name="cart"></ion-icon>
+            Expires On:{{viewData.enddate}}
+          </div>
+                      <p text-wrap>
+                        {{viewData.description}}</p>
+
+        </ion-col>
+
+
+</ion-content>

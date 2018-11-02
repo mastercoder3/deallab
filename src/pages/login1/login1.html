@@ -1,14 +1,8 @@
 <!-- Themes Login + logo 2 -->
-<ion-content has-header *ngIf="data != null" >
-  <ion-grid *ngIf="data != null">
-      <ion-row padding-left padding-right>
-          <ion-col text-center col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
-
-
-            <!--  <button ion-button text-capitalize button-clear clear float-left (click)="onEvent('onSkip')">{{data.skip}}</button>
-              <button ion-button text-capitalize button-clear clear float-right (click)="onEvent('onRegister')">{{data.register}}</button>-->
-
-          </ion-col>
+<ion-content  >
+  <ion-grid >
+      <ion-row >
+         
 
 
 
@@ -32,20 +26,21 @@
 
             <!---Input field password-->
            
-              <ion-input text-left required type="password" [placeholder]="data.password" [(ngModel)]="password"></ion-input>
+              <ion-input text-left required style="color:black;" type="password" [placeholder]="data.password" [(ngModel)]="password"></ion-input>
               <hr>
               <ion-input text-left required type="text" [placeholder]="data.number" [(ngModel)]="number"></ion-input>
               <hr>
             
-            <div  text-center>
+            <div text-center>
               
-              <button ion-button default-button block text-capitalize box-shadow style="margin-top: 60px;" (click)="signup()">Sign Up</button>
+              <button ion-button default-button block text-capitalize box-shadow style="margin-top: 60px; background-color:#F79071 !important;" (click)="signup()">Sign Up</button>
+              <button ion-button default-button block text-capitalize box-shadow style="margin-top: 20px; background-color:#F79071 !important;" (click)="login()">Login</button>
 
               <a class="hr-text" data-content="or Log in using" ></a>
 
             
-             <button ion-button default-button block text-capitalize box-shadow style="margin-top: 40px;" (click)="onEvent('onLogin')">{{data.login}}</button>
-              <p style = "color:deepskyblue">Not ready to sign up? Explore the app.</p>
+             <button ion-button default-button block text-capitalize box-shadow style="margin-top: 40px; background-color:#F79071;" (click)="onEvent('onLogin')">Instagram</button>
+              <p style = "color:#F79071">Not ready to sign up? Explore the app.</p>
             </div>
 
 

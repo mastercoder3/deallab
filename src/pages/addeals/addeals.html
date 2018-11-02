@@ -1,7 +1,8 @@
 <!-- Themes Login + logo 2 -->
-<ion-content has-header  >
-  <ion-grid   >
-      <ion-row padding-left padding-right>
+
+<ion-content>
+  <ion-grid>
+      <ion-row >
           <ion-col text-center col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
 
 
@@ -16,6 +17,9 @@
             <ion-item transparent text-center>
               <!---Logo Title-->
               <h1>ADD DEALS</h1>
+              <button navPop ion-button icon-only style="margin-left:-90%; margin-top:-15%; background-color: white; color: #075ea4;">
+                  <ion-icon color="light" name="arrow-round-back"></ion-icon>
+                </button>
 
               <br>
               
@@ -23,24 +27,103 @@
               
             </ion-item>
             <!---Input field username-->
-            <button ion-button>Upload Image</button>
-              <ion-input transparent text-left required type="text" placeholder="title" [(ngModel)]="dealsData.title"></ion-input>
-              <hr>
-              <ion-input transparent text-left required type="text"placeholder="description" [(ngModel)]="dealsData.description"></ion-input>
-              <hr>
-              <ion-input text-left required type="text" placeholder="link" [(ngModel)]="dealsData.link"></ion-input>
-              <hr>
-            
+            <input type="file" (change)="upload($event)" accept=".png,.jpg"/>
+            <!-- <button ion-button type="file" (change)="upload($event)" accept=".png,.jpg" (click) = "uploadPhoto()">Upload Image</button> -->
+            <h2><strong>Deal Link</strong></h2>
 
-            <!---Input field password-->
-           
-              <ion-input text-left required type="text" placeholder="category" [(ngModel)]="dealsData.category"></ion-input>
-              <hr>
-              
+            <ion-input type="text" placeholder="http://www.site.com" [(ngModel)]="dealsData.link" style="width: 320px;
+          padding: 2px;
+          border: 1px solid gray;
+          margin: 0;
+          border-radius: 5px;
+          color: gray">
+            </ion-input>
+            <!-- <ion-input text-left required type="text" placeholder="http://www.site.com" [(ngModel)]="dealsData.link"></ion-input> -->
+             <br> <hr>
+
+             <h2><strong>Deal details</strong></h2>
+
+              <ion-label><strong>PRICE</strong></ion-label>
+             <ion-input type="text" placeholder="0.00" [(ngModel)]="dealsData.price" style="width: 320px;
+          padding: 2px;
+          border: 1px solid gray;
+          margin: 0;
+          border-radius: 5px;
+          color: gray">
+            </ion-input>
+
+            <ion-label><strong>VOUCHER CODE</strong></ion-label>
+             <ion-input type="text" placeholder="Enter the voucher code" [(ngModel)]="dealsData.coupon" style="width: 320px;
+          padding: 2px;
+          border: 1px solid gray;
+          margin: 0;
+          border-radius: 5px;
+          color: gray">
+            </ion-input>
+
+            <ion-label><strong>TITLE</strong></ion-label>
+             <ion-input type="text" placeholder="A short descriptive title of your deal" [(ngModel)]="dealsData.title" style="width: 320px;
+          padding: 2px;
+          border: 1px solid gray;
+          margin: 0;
+          border-radius: 5px;
+          color: gray">
+            </ion-input>
+
+            <ion-label><strong>DESCRIPTION</strong></ion-label>
+             <ion-textarea text-wrap type="text" placeholder="Here you can describe the deal in your
+             own words and explain to  the users why it's a good deal!" [(ngModel)]="dealsData.description" style="width: 320px;
+          
+          height: 14%;
+          padding: 2px;
+          border: 1px solid gray;
+          margin: 0;
+          border-radius: 5px;
+          color: gray">
+            </ion-textarea>
+
+            <ion-label><strong>DEAL STARTS</strong></ion-label>
+             <ion-input type="text" placeholder="DD/MM/YY" [(ngModel)]="dealsData.startdate" style="width: 320px;
+          padding: 2px;
+          border: 1px solid gray;
+          margin: 0;
+          border-radius: 5px;
+          color: gray">
+            </ion-input>
+
+            <ion-label><strong>DEAL EXPIRES</strong></ion-label>
+             <ion-input type="text" placeholder="DD/MM/YY" [(ngModel)]="dealsData.enddate" style="width: 320px;
+          padding: 2px;
+          border: 1px solid gray;
+          margin: 0;
+          border-radius: 5px;
+          color: gray">
+            </ion-input>
+
+            <ion-label><strong>CATEGORY</strong></ion-label>
+             <ion-input type="text" placeholder="Place deal's category here" [(ngModel)]="dealsData.category" style="width: 320px;
+          padding: 2px;
+          border: 1px solid gray;
+          margin: 0;
+          border-radius: 5px;
+          color: gray">
+            </ion-input>
             
-            <div  text-center>
+          
               
-              <button ion-button default-button block text-capitalize box-shadow style="margin-top: 60px;" (click)="addDeals()">Submit</button>
+              <!-- <ion-input transparent text-left required type="text"placeholder="My QR data" [(ngModel)]="dealsData.qrdata"></ion-input>
+              <hr> -->
+              <!-- <button ion-button default-button block text-capitalize box-shadow style="margin-top: 60px;" (click)="createCode()"><ion-icon name="barcode"></ion-icon>Create Code</button>
+              <ion-card *ngIf="createdCode">
+                  <ion-card-content>
+                    <p>Value: {{ createdCode }}</p>
+                  </ion-card-content>
+                </ion-card> -->
+
+            
+            <div text-center>
+              
+              <button ion-button default-button block text-capitalize box-shadow style="margin-top: 50px; background-color: #075ea4;" (click)="addDeals()">Post Deal</button>
 
 
             

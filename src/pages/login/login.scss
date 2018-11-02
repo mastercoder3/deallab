@@ -5,7 +5,7 @@ page-login {
     }
      h1{
         font-family: "Segoe UI";
-        font-size: 190px;
+        font-size: 25px;
         
      }
     
@@ -45,15 +45,15 @@ page-login {
 
 
     // Settings Logo
-    img {
-      max-width: 170px;
-      max-height: 40px;
-    }
+    // img {
+    //   max-width: 170px;
+    //   max-height: 40px;
+    // }
   
     [form] {
-      padding: 16px !important;
-      border-radius: 14px !important;
-      margin-bottom: 20px;
+      padding: 8px !important;
+      border-radius: 0px !important;
+      margin-bottom: 0px;
       background: theme-colors('mainColors', 'primaryBase') !important;
       box-shadow:  0 3px 17px rgba(0, 0, 0, 0.16);
   
@@ -73,9 +73,9 @@ page-login {
          box-shadow: none !important;
          padding-right: 0px !important;
      }
-     ion-label {
-       margin: 0 5px !important;
-     }
+    //  ion-label {
+    //    margin: 0 5px !important;
+    //  }
      ion-input {
 
         border-bottom: 10 px solid black !important;
@@ -120,6 +120,12 @@ page-login {
     }
     [button-icon-clear]{
       box-shadow: none !important;
+    }
+    .text-input {
+      color: #000000 !important;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 17px;
     }
 
 }

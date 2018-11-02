@@ -1,18 +1,85 @@
 <!--
-  Generated template for the TabsettingsPage page.
+  Generated template for the UsernamePage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
 
-  <ion-navbar>
-    <ion-title>tabsettings</ion-title>
-  </ion-navbar>
-
-</ion-header>
 
 
 <ion-content padding>
+    <ion-grid>
+        <ion-row padding-left padding-right>
+           
 
+  
+            <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6 form >
+              <ion-item transparent text-center *ngIf = userdata >
+                <!---Logo Title-->
+                <h5 ion-text no-margin text-wrap>USERNAME</h5>
+  
+                
+              </ion-item>
+              <ion-label style="font-size: 10px">PERSONAL INFORMATION</ion-label>
+              <!---Input field username-->
+
+              <ion-label left style="font-size:10px" class="textarea">Name</ion-label>
+                <ion-input transparent text-left required type="text"></ion-input>
+                <hr>
+
+
+
+                
+                <ion-label left style="font-size:10px" class="textarea">Email</ion-label>
+
+                <ion-input text-left required type="text" [(ngModel)]="userdata.email" ></ion-input>
+                
+              
+  
+              <!---Input field password-->
+              <ion-label left style="font-size:10px" type = "number" class="textarea">Phone number</ion-label>
+
+              <ion-input text-left required type="text"  ></ion-input>
+
+
+              <ion-label left style="font-size:10px" class="textarea">Password</ion-label>
+
+                <ion-input text-left required type="password"></ion-input>
+              
+              <ion-label>APP</ion-label>
+              <ion-label left style="font-size:10px" class="textarea">My data</ion-label>
+
+              <ion-label left style="font-size:10px" class="textarea">Account</ion-label>
+
+              
+              
+              
+                <div  text-center>
+                
+  
+  
+              
+               <button class="abc" ion-button default-button block text-capitalize box-shadow style="margin-top: 40px;"(click)="">LOG OUT</button>
+              </div>
+  
+  
+            </ion-col>
+            
+  
+            <!---End Share Section-->
+        </ion-row>
+  
+    </ion-grid>
 </ion-content>
+
+<style>
+.abc{
+  background-color: #000000;
+  
+}
+.abc:hover{
+  background-color: #000000;
+}
+
+</style>
+

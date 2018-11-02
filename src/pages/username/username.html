@@ -13,18 +13,21 @@
            
 
   
-            <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6 form>
+            <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6 form *ngIf=userdata>
               <ion-item transparent text-center>
                 <!---Logo Title-->
                 <h5 ion-text no-margin text-wrap>USERNAME</h5>
+                <button navPop ion-button icon-only style="margin-left:-90%; margin-top:-15%; background-color: white; color: #000000;">
+                    <ion-icon color="light" name="arrow-round-back"></ion-icon>
+                  </button>
   
                 
               </ion-item>
-              <ion-label style="font-size: 10px">PERSONAL INFORMATION</ion-label>
+              <ion-label style="font-size: 15px">PERSONAL INFORMATION</ion-label>
               <!---Input field username-->
 
               <ion-label left style="font-size:10px" class="textarea">Name</ion-label>
-                <ion-input transparent text-left required type="text" ></ion-input>
+              {{userdata.username}}
                 <hr>
 
 
@@ -32,19 +35,16 @@
                 
                 <ion-label left style="font-size:10px" class="textarea">Email</ion-label>
 
-                <ion-input text-left required type="text" ></ion-input>
-                
+                {{userdata.email}}       
+                <hr>         
               
   
               <!---Input field password-->
-              <ion-label left style="font-size:10px" class="textarea">Phone number</ion-label>
+              <ion-label left style="font-size:10px" type = "number" class="textarea">Phone number</ion-label>
 
-              <ion-input text-left required type="text"  ></ion-input>
+              {{userdata.number}}
+              <hr>
 
-
-              <ion-label left style="font-size:10px" class="textarea">Password</ion-label>
-
-                <ion-input text-left required type="password"></ion-input>
               
               <ion-label>APP</ion-label>
               <ion-label left style="font-size:10px" class="textarea">My data</ion-label>
@@ -59,7 +59,7 @@
   
   
               
-               <button class="abc" ion-button default-button block text-capitalize box-shadow style="margin-top: 40px;"(click)="onEvent('onLogin')">LOG OUT</button>
+               <button class="abc" ion-button default-button block text-capitalize box-shadow style="margin-top: 40px;"(click)="logout()">LOG OUT</button>
               </div>
   
   

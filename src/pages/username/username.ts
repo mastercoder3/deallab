@@ -1,5 +1,9 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AdddealsProvider } from '../../providers/adddeals/adddeals';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { LoginPage } from '../login/login';
+
 
 /**
  * Generated class for the UsernamePage page.
@@ -29,14 +33,37 @@ export class UsernamePage {
       "errorPassword"   : "Field can't be empty"
 }
 @Input() events: any;
+// @ViewChild('content') nav: NavController;
+
 
 public username: string;
 public password: string;
 
 private isUsernameValid: boolean = true;
 private isPasswordValid: boolean = true;
+    
+    userdata: {};
+    
 
-constructor() { }
+constructor(public afAuth : AngularFireAuth,private navCtrl:NavController,
+    public navParams: NavParams, public api: AdddealsProvider,) { 
+    
+    
+    console.log(this.afAuth.auth.currentUser); 
+    let uid = localStorage.getItem('uid');
+    
+    this.api.getInfluencer(uid)
+     .subscribe(res =>{
+       console.log(res)
+      //now we will bind the data to the ngMOdel 
+       this.userdata = res; 
+    //  })
+  })
+}
+
+logout() {
+    this.navCtrl.push(LoginPage);
+}
 
 onEvent = (event: string): void => {
     if (event == "onLogin" && !this.validate()) {
@@ -49,6 +76,16 @@ onEvent = (event: string): void => {
         });
     }
   }
+
+//   getUser(){
+//     console.log(this.afAuth.auth.currentUser); 
+//     let uid = localStorage.getItem('uid');
+//     //giving getInfluencer the uid and storing the data to the user which we will furthur use in the html
+//     this.firestore.getInfluencer(uid).subscribe(data=>{
+//       this.user = data;  
+//        console.log(data)                    //assigning user the data
+//     })
+//   }
 
   validate():boolean {
     this.isUsernameValid = true;

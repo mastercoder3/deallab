@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, NavController } from 'ionic-angular';
 
 
 import { MyApp } from './app.component';
@@ -10,6 +10,8 @@ import { LoginPage } from '../pages/login/login';
 import { ListPage } from '../pages/list/list';
 import { AngularFireModule } from '@angular/fire';
 import { firebaseConfig  } from '../environment';
+
+import { AngularFireStorageModule } from 'angularfire2/storage';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -32,20 +34,35 @@ import { UpdateDealsPage } from "../pages/update-deals/update-deals";
 import { UpdateDealsPageModule } from '../pages/update-deals/update-deals.module';
 import { HelperProvider } from '../providers/helper/helper';
 
+import {SelectSearchableModule} from 'ionic-select-searchable'
+import { Camera, CameraOptions } from "@ionic-native/camera";
+import { AndroidPermissions } from '@ionic-native/android-permissions';
+import { LoginPageModule } from '../pages/login/login.module';
+import { StartingPage } from '../pages/starting/starting';
+// import { ViewDealPage } from '../pages/view-deal/view-deal';
+import { ViewDealPageModule } from '../pages/view-deal/view-deal.module';
+import { Login1PageModule } from '../pages/login1/login1.module';
+
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { BarcodeScanner  } from "@ionic-native/barcode-scanner";
+import { UsernamePageModule } from '../pages/username/username.module';
+
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    LoginPage,
+    // LoginPage,
     UploadealsPage,
-    Login1Page,
+    // Login1Page,
     CpasswordPage,
-    UsernamePage,
+    // UsernamePage,
     DeleteAccountPage,
     DataRequestPage,
     DealPage,
+    StartingPage,
     
     
     
@@ -55,8 +72,15 @@ import { HelperProvider } from '../providers/helper/helper';
     AddealsPageModule,
     AngularFirestoreModule,
     UpdateDealsPageModule,
+    LoginPageModule,
+    AngularFireStorageModule
+,   UsernamePageModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
+    ViewDealPageModule,
+    Login1PageModule,
+    NgxQRCodeModule,
+     SelectSearchableModule,
     AngularFireModule.initializeApp(firebaseConfig)
 
   ],
@@ -74,6 +98,7 @@ import { HelperProvider } from '../providers/helper/helper';
     DataRequestPage,
     DealPage,
     AddealsPage,
+    StartingPage,
   
     
     ],
@@ -86,7 +111,11 @@ import { HelperProvider } from '../providers/helper/helper';
     AngularFireAuth,
     FirestoreProvider,
     AdddealsProvider,
-    HelperProvider
+    HelperProvider,
+    BarcodeScanner
+    // Camera,
+    // AndroidPermissions
+
   ]
 })
 export class AppModule {}

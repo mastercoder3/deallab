@@ -8,6 +8,7 @@ import { AddealsPage } from './addeals';
   ],
   imports: [
     IonicPageModule.forChild(AddealsPage),
+    
   ],
 })
 export class AddealsPageModule {}

@@ -3,6 +3,9 @@ page-login1 {
     ion-row {
       height: 100%;
     }
+    .b1{
+      color: #F79071;
+    }
      h1{
         font-family: "Segoe UI";
         font-size: 190px;
@@ -120,6 +123,12 @@ page-login1 {
     }
     [button-icon-clear]{
       box-shadow: none !important;
+    }
+    .text-input {
+      color: #000000 !important;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 17px;
     }
 
     

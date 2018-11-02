@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import { NavController } from 'ionic-angular';
 // import AuthProvider = firebase.auth.AuthProvider;
 
 @Injectable()
@@ -17,16 +18,27 @@ export class AuthService {
 		return this.afAuth.auth.createUserWithEmailAndPassword(credentials.email,credentials.password);
 	}
 
-	get authenticated(): boolean {
-		return //this.user !== null;
+	authenticated(){
+		this.afAuth.auth.onAuthStateChanged(user=>{
+           if(user){
+			   return true
+		   }else{
+			   return false
+		   }
+		},err=>{
+			return false
+		}
+		)
 	}
 
 	getEmail() {
 		return //this.user && this.user.email;
 	}
 
-	signOut(): Promise<void> {
-		return this.afAuth.auth.signOut();
+	logout() {
+		localStorage.removeItem('');
+		// this.navCtrl.push('LoginPage');
+
 	}
 
 	

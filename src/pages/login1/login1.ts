@@ -26,7 +26,7 @@ export class Login1Page {
         "username"       : "Name",
         "password"       : "Password",
         "number":"Phone number",
-        "login"          : "Instagram",
+        
         "logo"           : "assets/images/logo/2.png",
         "errorUser"       : "Field can't be empty",
         "errorPassword"   : "Field can't be empty"
@@ -69,13 +69,16 @@ export class Login1Page {
                 resp => {
                     this.userData = {
                         email: this.email,
-                        role: "influencer"
+                        username: this.username
                     }
                     this.firestore.saveUser(resp.user.uid, this.userData);
                     this.navCtrl.push(LoginPage)
                 }
             )
         }
+    }
+    login(){
+        this.navCtrl.push("LoginPage")
     }
 
     toggleForm(){

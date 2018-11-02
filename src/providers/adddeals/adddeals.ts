@@ -10,13 +10,19 @@ import { AngularFirestore } from 'angularfire2/firestore';
 */
 @Injectable()
 export class AdddealsProvider {
+  collection(arg0: string, arg1: (ref: any) => any): any {
+    throw new Error("Method not implemented.");
+  }
   
 
-  constructor(public http: HttpClient, public firestore: AngularFirestore) {}
+  constructor(public http: HttpClient, public firestore: AngularFirestore) {
+    
+  }
 
 
 
 getInfluencer(uid){
+  console.log(uid)
   return this.firestore.doc('users/'+ uid).valueChanges();
 }
 
@@ -25,6 +31,7 @@ getInfluencer(uid){
   }
 
   updateDeal(uid, data) {
+    console.log(uid,data)
     return this.firestore.collection('deal').doc(uid).update(data);
   }
 
@@ -33,11 +40,17 @@ getInfluencer(uid){
   }
 
   getDeal(uid) {
-    return this.firestore.collection('deal').doc(uid).valueChanges();
+    return this.firestore.doc('deal/'+ uid).valueChanges();
   }
   
   getDeals() {
-    return this.firestore.collection('deal').snapshotChanges();
+    return this.firestore.collection('/deal').snapshotChanges();
+  }
+  getApprovedDeals(){
+    return this.firestore.collection('products', ref=> ref.where('status','==','approved')).snapshotChanges();
+  }
+  getInfluencerDeals(uid){
+    return this.firestore.collection('deal', ref=> ref.where('influencerid', '==',uid)).snapshotChanges();
   }
 
 }

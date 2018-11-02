@@ -5,6 +5,8 @@ import { AuthService } from '../../services/auth.service';
 
 import { Login1Page } from '../login1/login1';
 import { DealPage } from '../deal/deal';
+import { StartingPage } from '../starting/starting';
+import { TabhomePage } from '../tabhome/tabhome';
 
 @IonicPage()
 @Component({
@@ -29,7 +31,8 @@ export class LoginPage {
   public username: string;
   public email : string;
   public number : number;
-	public password: string;
+    public password: string;
+    
 	loginError: string;
 
 
@@ -61,16 +64,27 @@ export class LoginPage {
 						email: this.email,
 						password: this.password
 				}
-				this.auth.login(this.credentials).then(
-					() => this.navCtrl.setRoot(DealPage),
+                this.auth.login(this.credentials)
+                .then(
+                
+					(data) => {
+                        console.log(data)
+                        localStorage.setItem('uid',data.user.uid);
+                        this.navCtrl.setRoot(TabhomePage)
+                    },
 				error => this.loginError = error.message
 			);
 				
 		}
 		}
 
+        clickSignUp(){
+            this.navCtrl.push(Login1Page)
+        }
 
-
+        homepage(){
+            this.navCtrl.push(StartingPage)
+        }
 
   
     validate():boolean {
@@ -84,5 +98,7 @@ export class LoginPage {
 
       return this.isPasswordValid && this.isUsernameValid;
    }
+
+
 
 }
