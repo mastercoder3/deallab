@@ -1,16 +1,16 @@
 <!-- Theme Search Field + Header 2 -->
-<ion-header >
-    <ion-navbar color = "primary">
+<ion-header style="background-color: #35373b !important">
+    <ion-navbar style="background-color: #35373b !important">
         <!-- <button ion-button icon-only menuToggle>
           <ion-icon name="menu"></ion-icon>
         </button> -->
     
-        <ion-title>
+        <ion-title style="background-color: #35373b !important; ">
           Deal Labs
         </ion-title>
     
         <ion-buttons end>
-          <button ion-button icon-only (click)="logout()">
+          <button ion-button icon-only style="color: white !important;" (click)="logout()">
             LOGOUT
           </button>
         </ion-buttons>
@@ -26,22 +26,24 @@
         <ion-col col-12 >
           <!-- Content List -->
           <ion-list no-margin (click) = "viewUser(uid)">
-            <ion-item default-item no-lines  >
+            <ion-item default-item no-lines>
               <!-- <ion-avatar item-start >
                 <img src  = "assets/imgs/logo.png">
               </ion-avatar> -->
               <!--Title -->
-
-              <h2 ion-text item-title>{{user?.username}}</h2>
+              
+              <h2 ion-text item-title style="margin-left: 30%;">{{user?.username}}</h2>
               <!--Subtitle -->
-              <p ion-text item-subtitle>{{user?.email}}</p>
+              <p ion-text item-subtitle style="margin-left: 30%;">{{user?.email}}</p>
+           
               <!-- <span span-medium>
                 {{data.items.detail}}
               </span> -->
             </ion-item>
           </ion-list>
           
-          <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+          <ion-searchbar style="background-color:white !important; border-radius:5px !important; 
+          margin:0 auto !important; max-width: 90% !important;" (ionInput)="getItems($event)"></ion-searchbar>
 
           
           
@@ -88,10 +90,10 @@
                       <!--Content Subtitle-->
                       <ion-row>
                       <ion-col col-6>
-                      <button ion-button full style="border-radius:10px;" (click) = "updateDeals(item)">Update Deal</button>
+                      <button ion-button full style="border-radius:10px; background-color: #03a5c1" (click) = "updateDeals(item)">Update Deal</button>
                     </ion-col>
                     <ion-col col-6>
-                    <button style="background-color:brown; border-radius:10px;" ion-button full (click) = "deleteDeal(item.id)">Delete deal</button>
+                    <button style="background-color:#35373b; border-radius:10px;" ion-button full (click) = "deleteDeal(item.id)">Delete deal</button>
                     <!-- </ion-item-divider> -->
                   </ion-col>
                 </ion-row>

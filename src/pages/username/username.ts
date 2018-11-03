@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AdddealsProvider } from '../../providers/adddeals/adddeals';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { LoginPage } from '../login/login';
+import { CpasswordPage } from '../cpassword/cpassword';
+import { HelperProvider } from '../../providers/helper/helper';
 
 
 /**
@@ -42,10 +44,10 @@ public password: string;
 private isUsernameValid: boolean = true;
 private isPasswordValid: boolean = true;
     
-    userdata: {};
+    userdata;
     
 
-constructor(public afAuth : AngularFireAuth,private navCtrl:NavController,
+constructor(private helper: HelperProvider,  public afAuth : AngularFireAuth,private navCtrl:NavController,
     public navParams: NavParams, public api: AdddealsProvider,) { 
     
     
@@ -62,6 +64,7 @@ constructor(public afAuth : AngularFireAuth,private navCtrl:NavController,
 }
 
 logout() {
+    this.helper.load()
     this.navCtrl.push(LoginPage);
 }
 
@@ -75,6 +78,9 @@ onEvent = (event: string): void => {
             'password' : this.password
         });
     }
+  }
+  changepassword(){
+      this.navCtrl.push(CpasswordPage)
   }
 
 //   getUser(){

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AdddealsProvider } from '../../providers/adddeals/adddeals';
+import { HelperProvider } from '../../providers/helper/helper';
 
 
 @IonicPage()
@@ -14,7 +15,7 @@ export class UpdateDealsPage {
   itemId;
   
  
-  constructor(public navCtrl: NavController, public navParams: NavParams,public api: AdddealsProvider) {
+  constructor(private helper: HelperProvider, public navCtrl: NavController, public navParams: NavParams,public api: AdddealsProvider) {
     //we have created itemId,which is getting the id coming from tabhome.ts
      this.itemId= this.navParams.get('item'); //navParams means navigating the parameters
      this.itemId = JSON.parse(this.itemId);
@@ -34,6 +35,8 @@ export class UpdateDealsPage {
     console.log(data)
     return this.api.updateDeal(this.itemId.id, this.itemId).then(res=>{
       console.log('deal updated');
+      this.helper.load()
+  this.helper.presentBottomToast('Deal Updated!')
       this.navCtrl.push("TabhomePage");
     })
     

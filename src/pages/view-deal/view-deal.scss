@@ -2,4 +2,15 @@ page-view-deal {
 #img{
     margin-bottom: 1px;
 }
+.toolbar-title-ios {
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: white;
+    pointer-events: auto;
+}
+.bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default {
+    color: white;
+    background-color: transparent;
+}
 }

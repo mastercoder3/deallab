@@ -46,6 +46,8 @@ import { Login1PageModule } from '../pages/login1/login1.module';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner  } from "@ionic-native/barcode-scanner";
 import { UsernamePageModule } from '../pages/username/username.module';
+// import { TabhomePage } from '../pages/tabhome/tabhome';
+import { TabhomePageModule } from '../pages/tabhome/tabhome.module';
 
 
 
@@ -66,6 +68,7 @@ import { UsernamePageModule } from '../pages/username/username.module';
     
     
     
+    
   ],
   imports: [
     BrowserModule,
@@ -80,6 +83,7 @@ import { UsernamePageModule } from '../pages/username/username.module';
     ViewDealPageModule,
     Login1PageModule,
     NgxQRCodeModule,
+    TabhomePageModule,
      SelectSearchableModule,
     AngularFireModule.initializeApp(firebaseConfig)
 
@@ -99,6 +103,7 @@ import { UsernamePageModule } from '../pages/username/username.module';
     DealPage,
     AddealsPage,
     StartingPage,
+    
   
     
     ],

@@ -32,7 +32,7 @@
             <h2><strong>Deal Link</strong></h2>
 
             <ion-input type="text" placeholder="http://www.site.com" [(ngModel)]="dealsData.link" style="width: 320px;
-          padding: 2px;
+          padding: 9px;
           border: 1px solid gray;
           margin: 0;
           border-radius: 5px;
@@ -71,16 +71,17 @@
             </ion-input>
 
             <ion-label><strong>DESCRIPTION</strong></ion-label>
-             <ion-textarea text-wrap type="text" placeholder="Here you can describe the deal in your
-             own words and explain to  the users why it's a good deal!" [(ngModel)]="dealsData.description" style="width: 320px;
+             <textarea text-wrap type="text" placeholder="Here you can describe the deal in your
+             own words and explain to  the users why it's a good deal! Please don't paste marketing
+             or texts..." [(ngModel)]="dealsData.description" style="width: 320px;
           
           height: 14%;
-          padding: 2px;
+          padding: 11px;
           border: 1px solid gray;
           margin: 0;
           border-radius: 5px;
           color: gray">
-            </ion-textarea>
+            </textarea>
 
             <ion-label><strong>DEAL STARTS</strong></ion-label>
              <ion-input type="text" placeholder="DD/MM/YY" [(ngModel)]="dealsData.startdate" style="width: 320px;

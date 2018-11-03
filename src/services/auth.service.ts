@@ -41,6 +41,11 @@ export class AuthService {
 
 	}
 
+	updatePassword(password){
+		const user = this.afAuth.auth.currentUser;
+		user.updatePassword(password);
+	}
+
 	
 	
 	

@@ -3,14 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthService } from '../../services/auth.service';
 import { FirestoreProvider } from '../../providers/firestore/firestore';
 import { LoginPage } from '../login/login';
-
-
-/**
- * Generated class for the Login1Page page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { HelperProvider } from '../../providers/helper/helper';
 
 @IonicPage()
 @Component({
@@ -45,7 +38,7 @@ export class Login1Page {
   private credentials;
   
 
-  constructor(private navCtrl: NavController,private auth : AuthService, private firestore: FirestoreProvider) { }
+  constructor(private helper:HelperProvider,private navCtrl: NavController,private auth : AuthService, private firestore: FirestoreProvider) { }
 
   onEvent = (event: string): void => {
       if (event == "onLogin" && !this.validate()) {
@@ -69,9 +62,12 @@ export class Login1Page {
                 resp => {
                     this.userData = {
                         email: this.email,
-                        username: this.username
+                        username: this.username,
+                        number: this.number
                     }
                     this.firestore.saveUser(resp.user.uid, this.userData);
+                    this.helper.load()  
+                    this.helper.presentBottomToast('User Registered!')
                     this.navCtrl.push(LoginPage)
                 }
             )

@@ -5,6 +5,16 @@ page-tabhome {
     z-index: 9999;
     position: relative;
   }
+  .toolbar-title-ios {
+    text-align: center;
+    font-weight: bolder !important;
+    letter-spacing: 2px;
+
+    font-size: 1.6em;
+    font-weight: 600;
+    color: white;
+    pointer-events: auto;
+}
 
   [search-bar-bcg] {
     margin-top: 20px;
@@ -25,4 +35,8 @@ page-tabhome {
   //   right: 2% !important;
   //   left: 15%;
   // }
+  .bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default {
+    color: white;
+    background-color: transparent;
+}
 }

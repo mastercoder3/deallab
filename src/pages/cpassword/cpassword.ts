@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AuthService } from '../../services/auth.service';
+import { UsernamePage } from '../username/username';
 
 /**
  * Generated class for the CpasswordPage page.
@@ -23,7 +25,7 @@ export class CpasswordPage {
       "cp"       : "Current Password",
       "np"       : "New Password",
       "cnp":"Create New Password",
-      "login1": "SAVE",
+     
       "login"          : "Instagram",
       "logo"           : "assets/images/logo/2.png",
       "errorUser"       : "Field can't be empty",
@@ -33,11 +35,13 @@ export class CpasswordPage {
 
 public username: string;
 public password: string;
+public cnp: string;
+
 
 private isUsernameValid: boolean = true;
 private isPasswordValid: boolean = true;
 
-constructor() { }
+constructor(private afAuth: AuthService, private navCtrl:NavController) { }
 
 onEvent = (event: string): void => {
     if (event == "onLogin" && !this.validate()) {
@@ -49,6 +53,12 @@ onEvent = (event: string): void => {
             'password' : this.password
         });
     }
+  }
+  savepassword(){
+      if(this.cnp){
+        this.afAuth.updatePassword(this.cnp)
+        this.navCtrl.push(UsernamePage)
+      }
   }
 
   validate():boolean {

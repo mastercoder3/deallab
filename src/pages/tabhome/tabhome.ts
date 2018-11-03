@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {SelectSearchableModule, SelectSearchableComponent} from 'ionic-select-searchable'
 import { LoginPage } from '../login/login';
+import { HelperProvider } from '../../providers/helper/helper';
 
 /**
  * Generated class for the TabhomePage page.
@@ -40,7 +41,7 @@ export class TabhomePage{
   searchCat: any;
   searchDeals: any;
 
-  constructor(private navCtrl: NavController,
+  constructor(private helper: HelperProvider, private navCtrl: NavController,
     public afAuth : AngularFireAuth, public firestore : AdddealsProvider,private toastCtrl:ToastController) { }
 
   
@@ -58,10 +59,11 @@ export class TabhomePage{
   getUser(){
     console.log(this.afAuth.auth.currentUser);   //
     let uid = localStorage.getItem('uid');
+    console.log(uid)
     //giving getInfluencer the uid and storing the data to the user which we will furthur use in the html
-    this.firestore.getInfluencer(uid).subscribe(data=>{
-      this.user = data;  
-       console.log(data)                    //assigning user the data
+    this.firestore.getInfluencer(uid).subscribe(res=>{
+      this.user = res;  
+       console.log(this.user)                    //assigning user the data
     })
   }
 
@@ -107,6 +109,7 @@ export class TabhomePage{
 
   deleteDeal(id){
     this.firestore.deleteDeal(id).then(res=>{
+      this.helper.presentBottomToast('Deal deleted!')
       console.log('deal deleted')
     })
   }
@@ -149,6 +152,7 @@ export class TabhomePage{
 
   
   logout(){
+    this.helper.load()
     this.navCtrl.push(LoginPage);
   }
 

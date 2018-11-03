@@ -93,6 +93,8 @@ addDeals(){
     console.log(`error found`)
     
   })
+  this.helper.load()
+  this.helper.presentBottomToast('Deal Added!')
   this.navCtrl.push("TabhomePage");
 }
 

@@ -7,6 +7,7 @@ import { Login1Page } from '../login1/login1';
 import { DealPage } from '../deal/deal';
 import { StartingPage } from '../starting/starting';
 import { TabhomePage } from '../tabhome/tabhome';
+import { HelperProvider } from '../../providers/helper/helper';
 
 @IonicPage()
 @Component({
@@ -42,7 +43,7 @@ export class LoginPage {
   public isPasswordValid: boolean = true;
   public credentials;
 
-  constructor(private navCtrl: NavController,private auth : AuthService) { }
+  constructor(private navCtrl: NavController,private auth : AuthService,private helper:HelperProvider,) { }
 
   onEvent = (event: string): void => {
       if (event == "onLogin" && !this.validate()) {
@@ -70,7 +71,9 @@ export class LoginPage {
 					(data) => {
                         console.log(data)
                         localStorage.setItem('uid',data.user.uid);
-                        this.navCtrl.setRoot(TabhomePage)
+                        this.helper.load()
+                        this.helper.presentBottomToast('User Logged in!')
+                        this.navCtrl.setRoot(DealPage)
                     },
 				error => this.loginError = error.message
 			);

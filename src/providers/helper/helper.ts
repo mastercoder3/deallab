@@ -21,7 +21,8 @@ export class HelperProvider {
   
   load() {
     this.loader = this.loadingCtrl.create({
-      content: ''
+      content: '',
+      duration:1200
     });
     this.loader.present();
   }
@@ -109,7 +110,7 @@ export class HelperProvider {
   presentBottomToast(msg){
     this.toastCtrl.create({
       message:msg,
-      duration:2300,
+      duration:3000,
       position:'bottom'
     }).present();
   }
